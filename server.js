@@ -64,8 +64,8 @@ function pegaCorDeFundo(pegaVermelho, pegaVerde, pegaAzul) {
 // Crie as funções acima
 
 app.get("/cores", (req, res) => {
-  // Corrigir aqui!
-  const corDeFundo = pegaCorDeFundo(pegaVermelho, ...;
+  // Descomentar e corrigir aqui!
+  const corDeFundo = ""; //pegaCorDeFundo(pegaVermelho, ...;
   res.render("cores", { corDeFundo });
 });
 
