@@ -69,6 +69,25 @@ app.get("/cores", (req, res) => {
   res.render("cores", { corDeFundo });
 });
 
+/*
+4) Utilize a função map (obrigatório) e o que mais for necessário
+para implementar o seguinte comportamento:
+- Ao acessar /dobrar, você também deve passar dois números: início e fim,
+da seguinte forma: /dobrar/5/10, por exemplo
+- Esses valores chegam nas variáveis "inicio" e "fim"
+- Deste modo, você deve fazer com que ao acessar a página,
+mostre na tela os dobros dos números entre o início e o fim
+- Partindo do exemplo anterior, você deve retornar [10, 12, 14, 16, 18, 20],
+que são os dobros de [5, 6, 7, 8, 9, 10]
+É OBRIGATÓRIO UTILIZAR A FUNÇÃO MAP
+*/
+app.get("/dobros/:inicio/:fim", (req, res) => {
+  const inicio = req.params.inicio;
+  const fim = req.params.fim;
+  const dobros = []; // Dobros aqui;
+  res.render("dobros", { dobros: dobros.join(", ") });
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
