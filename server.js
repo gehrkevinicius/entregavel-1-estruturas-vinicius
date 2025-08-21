@@ -18,11 +18,30 @@ Acesse a página /random e atualize-a para testar sua lógica
 */
 
 app.get("/random", (req, res) => {
+  const numeros = gerarNumero();
   res.render("random", {
-    /* --> */ ultimoNumero: 0,
-    numeroAtual: 0 /* <-- Valores aqui */,
+    ultimoNum: numeros.ultimoNum,
+    numAtual: numeros.numAtual,
   });
 });
+
+function criarGeradorNum() {
+  let ultimoNum = null;
+
+  return function () {
+    const numAtual = Math.floor(Math.random() * 11);
+
+    const numAnterior = ultimoNum;
+
+    ultimoNum = numAtual;
+
+    return {
+      ultimoNum: numAnterior,
+      numAtual: numAtual,
+    };
+  };
+}
+const gerarNumero = criarGeradorNum();
 
 /*
 2) Crie uma função recursiva para inverter uma palavra
