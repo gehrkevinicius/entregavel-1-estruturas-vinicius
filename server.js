@@ -13,7 +13,7 @@ devolva numeros aleatorios na seguinte lógica:
 - Você deve gerar números aleatórios inteiros entre 0 e 10
 - Guarde o último número aleatório gerado em um estado dentro da closure
 - A função interna, quando invocada, deve retornar um objeto no seguinte formato:
-{ ultimoNumero: N_AQUI: numeroAtual }
+{ ultimoNumero: N_AQUI: numeroAtual: N_AQUI }
 Acesse a página /random e atualize-a para testar sua lógica
 */
 
@@ -24,10 +24,6 @@ app.get("/random", (req, res) => {
   });
 });
 
-app.get("/inverter", (req, res) => {
-  res.render("inverter");
-});
-
 /*
 2) Crie uma função recursiva para inverter uma palavra
 - A palavra que deve ser invertida chegará na variável "palavraParaInverter"
@@ -36,6 +32,10 @@ Seu programa deve funcionar de modo que, ao acessar o endereço /random,
 você deve ser capaz de digitar uma palavra, apertar o botão de enviar e
 receber a palavra invertida no alert.
 */
+app.get("/inverter", (req, res) => {
+  res.render("inverter");
+});
+
 app.get("/api/inverter/:palavraParaInverter", (req, res) => {
   const palavraParaInverter = req.params.palavraParaInverter;
   const invertida = "PALAVRA_INVERTIDA_AQUI";
