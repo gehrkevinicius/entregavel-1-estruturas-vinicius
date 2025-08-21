@@ -28,6 +28,24 @@ app.get("/inverter", (req, res) => {
   res.render("inverter");
 });
 
+/*Exercicio 1 - Função com Closure*/
+
+function criarGeradorNum() {
+  let ultimoNum = null;
+
+  return function () {
+    const numAtual = Math.floor(Math.random() * 11);
+    const numAnterior = ultimoNum;
+
+    ultimoNum = numAtual;
+
+    return {
+      ultimoNum: numAnterior,
+      numAtual: numAtual,
+    };
+  };
+}
+
 /*
 2) Crie uma função recursiva para inverter uma palavra
 - A palavra que deve ser invertida chegará na variável "palavraParaInverter"
