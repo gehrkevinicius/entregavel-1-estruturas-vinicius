@@ -108,7 +108,7 @@ app.get("/cores", (req, res) => {
 });
 
 /*
-4) Utilize a função map (obrigatório) e o que mais for necessário
+4) Utilize a função map (obrigatório) e o que mais for necessár io
 para implementar o seguinte comportamento:
 - Ao acessar /dobrar, você também deve passar dois números: início e fim,
 da seguinte forma: /dobrar/5/10, por exemplo
