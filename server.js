@@ -57,9 +57,19 @@ app.get("/inverter", (req, res) => {
 
 app.get("/api/inverter/:palavraParaInverter", (req, res) => {
   const palavraParaInverter = req.params.palavraParaInverter;
-  const invertida = "PALAVRA_INVERTIDA_AQUI";
+  const invertida = inverterPalavra(palavraParaInverter);
   res.json(invertida);
 });
+
+/* Exercio 2 */
+function inverterPalavra(palavraParaInverter, invertida = "") {
+  if (palavraParaInverter.length === 0) {
+    return invertida;
+  }
+  invertida = invertida + palavraParaInverter[palavraParaInverter.length - 1];
+  palavraParaInverter = palavraParaInverter.slice(0, -1);
+  return inverterPalavra(palavraParaInverter, invertida);
+}
 
 /*
 3) A função pegaCorDeFundo é uma função de alta ordem que recebe três funções como parâmetro:
@@ -79,12 +89,21 @@ function pegaCorDeFundo(pegaVermelho, pegaVerde, pegaAzul) {
 }
 
 // Crie as funções abaixo
+function pegaVermelho() {
+  return (Math.random() * 256) / 1;
+}
 
+function pegaVerde() {
+  return (Math.random() * 256) / 1;
+}
+
+function pegaAzul() {
+  return (Math.random() * 256) / 1;
+}
 // Crie as funções acima
 
 app.get("/cores", (req, res) => {
-  // Descomentar e corrigir aqui!
-  const corDeFundo = ""; //pegaCorDeFundo(pegaVermelho, ...;
+  const corDeFundo = pegaCorDeFundo(pegaVermelho, pegaVerde, pegaAzul);
   res.render("cores", { corDeFundo });
 });
 
@@ -101,8 +120,8 @@ que são os dobros de [5, 6, 7, 8, 9, 10]
 É OBRIGATÓRIO UTILIZAR A FUNÇÃO MAP
 */
 app.get("/dobros/:inicio/:fim", (req, res) => {
-  const inicio = req.params.inicio;
-  const fim = req.params.fim;
+  const inicio = +req.params.inicio;
+  const fim = +req.params.fim;
   const dobros = []; // Dobros aqui;
   res.render("dobros", { dobros: dobros.join(", ") });
 });
