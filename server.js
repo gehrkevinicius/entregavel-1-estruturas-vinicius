@@ -119,10 +119,20 @@ mostre na tela os dobros dos números entre o início e o fim
 que são os dobros de [5, 6, 7, 8, 9, 10]
 É OBRIGATÓRIO UTILIZAR A FUNÇÃO MAP
 */
+
+function criaArray(inicio, fim) {
+  const num = [];
+  for (let i = inicio; i <= fim; i++) {
+    num.push(i);
+  }
+  return num;
+}
+
 app.get("/dobros/:inicio/:fim", (req, res) => {
   const inicio = +req.params.inicio;
   const fim = +req.params.fim;
-  const dobros = []; // Dobros aqui;
+  const numeros = criaArray(inicio, fim);
+  const dobros = numeros.map((n) => n * 2);
   res.render("dobros", { dobros: dobros.join(", ") });
 });
 
